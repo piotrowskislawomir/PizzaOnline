@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{42EFFDAC-3474-484E-8DCE-4BE96EBB31A0}</ProjectGuid>
+    <ProjectGuid>{6350E64B-A524-4BE5-A4F6-0F296F3242CF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PizzaOnline.Tests</RootNamespace>
-    <AssemblyName>PizzaOnline.Tests</AssemblyName>
+    <RootNamespace>PizzaOnline.Web.Tests</RootNamespace>
+    <AssemblyName>PizzaOnline.Web.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
