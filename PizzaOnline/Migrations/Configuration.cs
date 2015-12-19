@@ -1,3 +1,5 @@
+using PizzaOnline.Storage;
+
 namespace PizzaOnline.Migrations
 {
     using System;
@@ -5,14 +7,14 @@ namespace PizzaOnline.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<PizzaOnline.PizzaOnlineContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<PizzaOnlineContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(PizzaOnline.PizzaOnlineContext context)
+        protected override void Seed(PizzaOnlineContext context)
         {
             //  This method will be called after migrating to the latest version.
 

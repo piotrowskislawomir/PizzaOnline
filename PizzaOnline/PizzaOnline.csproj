@@ -59,11 +59,18 @@
     <Compile Include="Migrations\201512191935490_delete_sample.Designer.cs">
       <DependentUpon>201512191935490_delete_sample.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512192018207_add_ingredients.cs" />
+    <Compile Include="Migrations\201512192018207_add_ingredients.Designer.cs">
+      <DependentUpon>201512192018207_add_ingredients.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\IEntity.cs" />
+    <Compile Include="Model\Ingredient.cs" />
     <Compile Include="Model\ModelBase.cs" />
-    <Compile Include="PizzaOnlineContext.cs" />
+    <Compile Include="Storage\PizzaOnlineContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Storage\IRepository.cs" />
+    <Compile Include="Storage\Repository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -75,6 +82,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512191935490_delete_sample.resx">
       <DependentUpon>201512191935490_delete_sample.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512192018207_add_ingredients.resx">
+      <DependentUpon>201512192018207_add_ingredients.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
