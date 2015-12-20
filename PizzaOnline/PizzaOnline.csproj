@@ -67,6 +67,8 @@
     <Compile Include="Model\IEntity.cs" />
     <Compile Include="Model\Ingredient.cs" />
     <Compile Include="Model\ModelBase.cs" />
+    <Compile Include="Services\IIngredientService.cs" />
+    <Compile Include="Services\IngredientService.cs" />
     <Compile Include="Storage\PizzaOnlineContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage\IRepository.cs" />
