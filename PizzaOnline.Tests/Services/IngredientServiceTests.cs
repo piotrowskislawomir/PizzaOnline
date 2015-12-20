@@ -20,14 +20,28 @@ namespace PizzaOnline.Tests.Services
         }
 
         [Test]
-        public void Add_Should_Persist_Ingredient_In_Repository()
+        public void Add_ShouldPersistIngredientInRepository()
         {
             var ingredient = new Ingredient();
 
             _sut.Add(ingredient);
-            
+
             A.CallTo(() => _ingredientsRepository.Persist(A<Ingredient>._))
                 .MustHaveHappened();
+        }
+
+        [Test]
+        public void Add_ShouldReturnIngredientFromRepository()
+        {
+            var expectedIngredient = new Ingredient();
+            A.CallTo(() => _ingredientsRepository.Persist(A<Ingredient>._))
+                .Returns(expectedIngredient);
+
+            var result = _sut.Add(expectedIngredient);
+
+            A.CallTo(() => _ingredientsRepository.Persist(A<Ingredient>._))
+                .MustHaveHappened();
+            Assert.That(result, Is.EqualTo(expectedIngredient));
         }
 
     }
