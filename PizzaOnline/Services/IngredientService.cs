@@ -13,7 +13,7 @@ namespace PizzaOnline.Services
 
         public Ingredient Add(Ingredient ingredient)
         {
-            return null;
+            return _ingredinetRepository.Persist(ingredient);
         }
     }
 }
