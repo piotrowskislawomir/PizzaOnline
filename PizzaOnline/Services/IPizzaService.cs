@@ -9,6 +9,6 @@ namespace PizzaOnline.Services
 {
     public interface IPizzaService
     {
-        void Add(Pizza pizza);
+        Pizza Add(Pizza pizza);
     }
 }
