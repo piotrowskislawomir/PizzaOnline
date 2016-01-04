@@ -21,21 +21,23 @@ namespace PizzaOnline.Api.Controllers
 
         [Route("api/ingredient")]
         [HttpPost]
-        public IHttpActionResult CreateIngredient(IngredientModel request)
+        public IHttpActionResult CreateIngredient(IngredientModel ingredientModel)
         {
-            var model = Mapper.Map<Ingredient>(request);
+            var ingredient = Mapper.Map<Ingredient>(ingredientModel);
 
-            var ingredient = _ingredientService.Add(model);
-
-            var ingredientModel = Mapper.Map<IngredientModel>(ingredient);
-
-            return CreatedAtRoute("GetIngredientById", new {id = ingredient.Id}, ingredientModel);
+            var ingredientDb = _ingredientService.Add(ingredient);
+            
+            return CreatedAtRoute("GetIngredientById",
+                new {id = ingredient.Id},
+                Mapper.Map<IngredientModel>(ingredientDb));
         }
 
-        [Route("api/ingredient{id}", Name = "GetIngredientById")]
+        [Route("api/ingredient/{id}", Name = "GetIngredientById")]
+        [HttpGet]
         public IHttpActionResult GetIngredient(int id)
         {
-            return Ok();
+            var ingredient = _ingredientService.Get(id);
+            return Ok(Mapper.Map<IngredientModel>(ingredient));
         }
     }
 }

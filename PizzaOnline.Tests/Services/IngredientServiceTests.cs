@@ -44,7 +44,16 @@ namespace PizzaOnline.Tests.Services
             Assert.That(result, Is.EqualTo(expectedIngredient));
         }
 
+        [Test]
+        public void Get_ShouldReturnIngredientFromRepository()
+        {
+            const int id = 123;
 
+            _sut.Get(id);
+
+            A.CallTo(() => _ingredientsRepository.FindById(id))
+                .MustHaveHappened();
+        }
 
     }
 }

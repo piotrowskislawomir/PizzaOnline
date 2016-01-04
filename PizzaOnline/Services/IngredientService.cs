@@ -15,5 +15,10 @@ namespace PizzaOnline.Services
         {
             return _ingredinetRepository.Persist(ingredient);
         }
+
+        public Ingredient Get(int id)
+        {
+            return _ingredinetRepository.FindById(id);
+        }
     }
 }
