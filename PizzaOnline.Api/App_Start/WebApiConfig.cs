@@ -1,7 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Reflection;
 using System.Web.Http;
+using Autofac;
+using Autofac.Integration.WebApi;
+using Newtonsoft.Json.Serialization;
+using PizzaOnline.Services;
+using PizzaOnline.Storage;
 
 namespace PizzaOnline.Api
 {
@@ -9,16 +12,26 @@ namespace PizzaOnline.Api
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
+            config.Formatters.JsonFormatter.SerializerSettings.ContractResolver =
+                new CamelCasePropertyNamesContractResolver();
+            config.Formatters.JsonFormatter.UseDataContractJsonSerializer = false;
 
-            // Web API routes
             config.MapHttpAttributeRoutes();
 
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
+            var builder = new ContainerBuilder();
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            ConfigureContainer(builder);
+            var container = builder.Build();
+
+            config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
+        }
+
+        private static void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.Register(_ => new PizzaOnlineContext("PizzaOnlineConnection")).As<PizzaOnlineContext>();
+            builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
+            builder.RegisterType<IngredientService>().As<IIngredientService>();
+            builder.RegisterType<PizzaService>().As<IPizzaService>();
         }
     }
 }
