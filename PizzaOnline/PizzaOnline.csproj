@@ -63,6 +63,10 @@
     <Compile Include="Migrations\201512192018207_add_ingredients.Designer.cs">
       <DependentUpon>201512192018207_add_ingredients.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601041817207_added pizza model.cs" />
+    <Compile Include="Migrations\201601041817207_added pizza model.Designer.cs">
+      <DependentUpon>201601041817207_added pizza model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\IEntity.cs" />
     <Compile Include="Model\Ingredient.cs" />
@@ -90,6 +94,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512192018207_add_ingredients.resx">
       <DependentUpon>201512192018207_add_ingredients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601041817207_added pizza model.resx">
+      <DependentUpon>201601041817207_added pizza model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

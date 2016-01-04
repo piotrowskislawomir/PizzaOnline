@@ -19,7 +19,12 @@ namespace PizzaOnline.Services
 
         public void Add(Pizza pizza)
         {
-           
+            if (pizza.Toppings == null || !pizza.Toppings.Any())
+            {
+                throw new ArgumentException("The pizza has to contain toppings.");
+            }
+
+            _pizzasRepository.Persist(pizza);
         }
     }
 }

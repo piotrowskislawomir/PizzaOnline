@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using FakeItEasy;
 using NUnit.Framework;
 using PizzaOnline.Model;
@@ -27,12 +24,38 @@ namespace PizzaOnline.Tests.Services
         [Test]
         public void Add_ShouldPersistPizzaInRepository()
         {
-            var pizza = new Pizza();
+            var pizza = new Pizza
+            {
+                Toppings = new List<Ingredient>
+                {
+                    new Ingredient(),
+                    new Ingredient()
+                }
+            };
 
             _sut.Add(pizza);
 
             A.CallTo(() => _pizzasRepository.Persist(A<Pizza>._))
                 .MustHaveHappened();
+        }
+
+        [Test]
+        public void Add_ShouldOccurException_WhenCollectionOfToppingsIsNull()
+        {
+            var pizza = new Pizza();
+
+            Assert.Throws<ArgumentException>(() => _sut.Add(pizza));
+        }
+
+        [Test]
+        public void Add_ShouldOccurException_WhenCollectionOfToppingsIsEmpty()
+        {
+            var pizza = new Pizza
+            {
+                Toppings = new List<Ingredient>()
+            };
+
+            Assert.Throws<ArgumentException>(() => _sut.Add(pizza));
         }
     }
 }
