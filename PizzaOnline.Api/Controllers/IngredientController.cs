@@ -39,5 +39,13 @@ namespace PizzaOnline.Api.Controllers
             var ingredient = _ingredientService.Get(id);
             return Ok(Mapper.Map<IngredientModel>(ingredient));
         }
+
+        [Route("api/ingredients")]
+        [HttpGet]
+        public IHttpActionResult GetAllIngredients()
+        {
+            var ingredients = _ingredientService.GetAll();
+            return Ok(ingredients.Select(Mapper.Map<IngredientModel>));
+        }
     }
 }

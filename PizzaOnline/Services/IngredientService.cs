@@ -1,4 +1,6 @@
-﻿using PizzaOnline.Model;
+﻿using System.Collections;
+using System.Collections.Generic;
+using PizzaOnline.Model;
 using PizzaOnline.Storage;
 
 namespace PizzaOnline.Services
@@ -21,9 +23,9 @@ namespace PizzaOnline.Services
             return _ingredinetRepository.FindById(id);
         }
 
-        public void GetAll()
+        public IEnumerable<Ingredient> GetAll()
         {
-
+            return _ingredinetRepository.GetAll();
         }
     }
 }

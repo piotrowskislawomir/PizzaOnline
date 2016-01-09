@@ -1,4 +1,6 @@
-﻿using PizzaOnline.Model;
+﻿using System.Collections;
+using System.Collections.Generic;
+using PizzaOnline.Model;
 
 namespace PizzaOnline.Services
 {
@@ -6,5 +8,6 @@ namespace PizzaOnline.Services
     {
         Ingredient Add(Ingredient ingredient);
         Ingredient Get(int id);
+        IEnumerable<Ingredient> GetAll();
     }
 }
