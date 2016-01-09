@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Reflection;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Autofac;
 using Autofac.Integration.WebApi;
 using Newtonsoft.Json.Serialization;
@@ -24,9 +25,21 @@ namespace PizzaOnline.Api
             ConfigureContainer(builder);
             var container = builder.Build();
             config.DependencyResolver = new AutofacWebApiDependencyResolver(container);
-        }
+        
 
-        private static void ConfigureContainer(ContainerBuilder builder)
+          EnableCrossSiteRequests(config);
+    }
+
+    private static void EnableCrossSiteRequests(HttpConfiguration config)
+    {
+        var cors = new EnableCorsAttribute(
+            origins: "*",
+            headers: "*",
+            methods: "*");
+        config.EnableCors(cors);
+    }
+
+    private static void ConfigureContainer(ContainerBuilder builder)
         {
             builder.Register(_ => new PizzaOnlineContext("PizzaOnlineConnection")).As<DbContext>();
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));

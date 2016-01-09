@@ -20,5 +20,10 @@ namespace PizzaOnline.Services
         {
             return _ingredinetRepository.FindById(id);
         }
+
+        public void GetAll()
+        {
+
+        }
     }
 }

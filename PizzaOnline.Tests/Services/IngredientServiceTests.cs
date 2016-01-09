@@ -55,5 +55,15 @@ namespace PizzaOnline.Tests.Services
                 .MustHaveHappened();
         }
 
+
+        [Test]
+        public void Get_ShouldReturnAllIngredientsFromRepository()
+        {
+            _sut.GetAll();
+
+            A.CallTo(() => _ingredientsRepository.GetAll())
+                .MustHaveHappened();
+        }
+
     }
 }
