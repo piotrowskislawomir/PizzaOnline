@@ -55,13 +55,23 @@ namespace PizzaOnline.Tests.Services
                 .MustHaveHappened();
         }
 
-
         [Test]
         public void Get_ShouldReturnAllIngredientsFromRepository()
         {
             _sut.GetAll();
 
             A.CallTo(() => _ingredientsRepository.GetAll())
+                .MustHaveHappened();
+        }
+
+        [Test]
+        public void Remove_ShouldRemoveIngredientFromRepository()
+        {
+            var ingredient = new Ingredient();
+
+            _sut.Remove(ingredient);
+
+            A.CallTo(() => _ingredientsRepository.Remove(A<Ingredient>._))
                 .MustHaveHappened();
         }
 

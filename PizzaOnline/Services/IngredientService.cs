@@ -27,5 +27,10 @@ namespace PizzaOnline.Services
         {
             return _ingredinetRepository.GetAll();
         }
+
+        public void Remove(Ingredient ingredient)
+        {
+           
+        }
     }
 }
