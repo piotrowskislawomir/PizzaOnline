@@ -11,13 +11,13 @@ namespace PizzaOnline.Tests.Services
     [TestFixture]
     public class PizzaServiceTests
     {
-        private IRepository<Pizza> _pizzasRepository;
+        private IPizzaRepository _pizzasRepository;
         private PizzaService _sut;
 
         [SetUp]
         public void SetUp()
         {
-            _pizzasRepository = A.Fake<IRepository<Pizza>>();
+            _pizzasRepository = A.Fake<IPizzaRepository>();
             _sut = new PizzaService(_pizzasRepository);
         }
 
@@ -26,10 +26,10 @@ namespace PizzaOnline.Tests.Services
         {
             var pizza = new Pizza
             {
-                Toppings = new List<Ingredient>
+                PizzasIngredients = new List<PizzasIngredients>
                 {
-                    new Ingredient(),
-                    new Ingredient()
+                    new PizzasIngredients(),
+                    new PizzasIngredients()
                 }
             };
 
@@ -52,10 +52,55 @@ namespace PizzaOnline.Tests.Services
         {
             var pizza = new Pizza
             {
-                Toppings = new List<Ingredient>()
+                PizzasIngredients = new List<PizzasIngredients>()
             };
 
             Assert.Throws<ArgumentException>(() => _sut.Add(pizza));
+        }
+
+        [Test]
+        public void Add_ShouldReturnNull_WhenPersistReturnedNull()
+        {
+            var pizza = new Pizza
+            {
+                PizzasIngredients = new List<PizzasIngredients>
+                {
+                    new PizzasIngredients(),
+                    new PizzasIngredients()
+                }
+            };
+            A.CallTo(() => _pizzasRepository.Persist(A<Pizza>._))
+                .Returns(null);
+
+            var result = _sut.Add(pizza);
+
+            A.CallTo(() => _pizzasRepository.Persist(A<Pizza>._))
+                .MustHaveHappened();
+            Assert.That(result, Is.Null);
+        }
+
+        [Test]
+        public void Add_ShouldReturnNotNullAndCallGet_WhenPersistReturnedNotNull()
+        {
+            var pizza = new Pizza
+            {
+                Id=1,
+                PizzasIngredients = new List<PizzasIngredients>
+                {
+                    new PizzasIngredients(),
+                    new PizzasIngredients()
+                }
+            };
+            A.CallTo(() => _pizzasRepository.Persist(A<Pizza>._))
+               .Returns(pizza);
+
+            var result = _sut.Add(pizza);
+
+            A.CallTo(() => _pizzasRepository.Persist(A<Pizza>._))
+                .MustHaveHappened();
+            Assert.That(result, Is.Not.Null);
+            A.CallTo(() => _pizzasRepository.GetByIdWithToppings(A<int>._))
+                .MustHaveHappened();
         }
 
         [Test]
@@ -67,6 +112,15 @@ namespace PizzaOnline.Tests.Services
 
             A.CallTo(() => _pizzasRepository.Remove(A<Pizza>._))
                 .MustHaveHappened();
+        }
+
+        [Test]
+        public void Get_ShouldCallGetFromRepository()
+        {
+            _sut.Get(int.MaxValue);
+
+            A.CallTo(() => _pizzasRepository.GetByIdWithToppings(A<int>._)).
+                MustHaveHappened();
         }
     }
 }

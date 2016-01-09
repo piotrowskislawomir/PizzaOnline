@@ -10,6 +10,6 @@ namespace PizzaOnline.Model
     {
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public IEnumerable<Ingredient> Toppings { get; set; }
+        public virtual ICollection<PizzasIngredients> PizzasIngredients { get; set; }
     }
 }

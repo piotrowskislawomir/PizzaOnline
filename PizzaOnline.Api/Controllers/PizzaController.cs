@@ -29,17 +29,25 @@ namespace PizzaOnline.Api.Controllers
             return Ok();
         }
 
+        [Route("api/pizza/{id}", Name = "GetPizzaById")]
+        [HttpGet]
+        public IHttpActionResult GetPizza(int id)
+        {
+            var pizza = _pizzaService.Get(id);
+            return Ok(Mapper.Map<PizzaModel>(pizza));
+        }
+
         [Route("api/pizza")]
         [HttpPost]
-        public IHttpActionResult CreateIngredient(PizzaModel ingredientModel)
+        public IHttpActionResult CreatePizza(PizzaModel pizzaModel)
         {
-            var ingredient = Mapper.Map<Pizza>(ingredientModel);
+            var pizza = Mapper.Map<Pizza>(pizzaModel);
 
-            var ingredientDb = _pizzaService.Add(ingredient);
+            var pizzaDb = _pizzaService.Add(pizza);
 
             return CreatedAtRoute("GetPizzaById",
-                new { id = ingredient.Id },
-                Mapper.Map<IngredientModel>(ingredientDb));
+                new { id = pizzaDb.Id },
+                Mapper.Map<PizzaModel>(pizzaDb));
         }
     }
 }

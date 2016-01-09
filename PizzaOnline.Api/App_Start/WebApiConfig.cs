@@ -43,6 +43,7 @@ namespace PizzaOnline.Api
         {
             builder.Register(_ => new PizzaOnlineContext("PizzaOnlineConnection")).As<DbContext>();
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));
+            builder.RegisterType<PizzaRepository>().As<IPizzaRepository>();
             builder.RegisterType<IngredientService>().As<IIngredientService>();
             builder.RegisterType<PizzaService>().As<IPizzaService>();
         }

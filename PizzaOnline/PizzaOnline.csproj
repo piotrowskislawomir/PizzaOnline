@@ -71,18 +71,33 @@
     <Compile Include="Migrations\201601041834129_add pizza model.Designer.cs">
       <DependentUpon>201601041834129_add pizza model.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601091240394_added toppings to pizza.cs" />
+    <Compile Include="Migrations\201601091240394_added toppings to pizza.Designer.cs">
+      <DependentUpon>201601091240394_added toppings to pizza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601091243596_added many-to-many pizzas and ingredients.cs" />
+    <Compile Include="Migrations\201601091243596_added many-to-many pizzas and ingredients.Designer.cs">
+      <DependentUpon>201601091243596_added many-to-many pizzas and ingredients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601091421081_pizza ingredient many-to-many added joined table.cs" />
+    <Compile Include="Migrations\201601091421081_pizza ingredient many-to-many added joined table.Designer.cs">
+      <DependentUpon>201601091421081_pizza ingredient many-to-many added joined table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\IEntity.cs" />
     <Compile Include="Model\Ingredient.cs" />
     <Compile Include="Model\ModelBase.cs" />
     <Compile Include="Model\Pizza.cs" />
+    <Compile Include="Model\PizzasIngredients.cs" />
     <Compile Include="Services\IIngredientService.cs" />
     <Compile Include="Services\IngredientService.cs" />
     <Compile Include="Services\IPizzaService.cs" />
     <Compile Include="Services\PizzaService.cs" />
+    <Compile Include="Storage\IPizzaRepository.cs" />
     <Compile Include="Storage\PizzaOnlineContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage\IRepository.cs" />
+    <Compile Include="Storage\PizzaRepository.cs" />
     <Compile Include="Storage\Repository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +119,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601041834129_add pizza model.resx">
       <DependentUpon>201601041834129_add pizza model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601091240394_added toppings to pizza.resx">
+      <DependentUpon>201601091240394_added toppings to pizza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601091243596_added many-to-many pizzas and ingredients.resx">
+      <DependentUpon>201601091243596_added many-to-many pizzas and ingredients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601091421081_pizza ingredient many-to-many added joined table.resx">
+      <DependentUpon>201601091421081_pizza ingredient many-to-many added joined table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
