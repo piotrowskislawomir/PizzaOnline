@@ -47,5 +47,14 @@ namespace PizzaOnline.Api.Controllers
             var ingredients = _ingredientService.GetAll();
             return Ok(ingredients.Select(Mapper.Map<IngredientModel>));
         }
+
+        [Route("api/ingredient/{id}")]
+        [HttpDelete]
+        public IHttpActionResult RemoveIngredient(int id)
+        {
+            var ingredient = new Ingredient {Id = id };
+           _ingredientService.Remove(ingredient);
+           return Ok();
+        }
     }
 }

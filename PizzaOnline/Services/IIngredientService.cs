@@ -9,5 +9,6 @@ namespace PizzaOnline.Services
         Ingredient Add(Ingredient ingredient);
         Ingredient Get(int id);
         IEnumerable<Ingredient> GetAll();
+        void Remove(Ingredient ingredient);
     }
 }
