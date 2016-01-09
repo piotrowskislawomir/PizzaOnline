@@ -57,5 +57,16 @@ namespace PizzaOnline.Tests.Services
 
             Assert.Throws<ArgumentException>(() => _sut.Add(pizza));
         }
+
+        [Test]
+        public void Remove_ShouldCallRemoveFromRepository()
+        {
+            var pizza = new Pizza();
+
+            _sut.Remove(pizza);
+
+            A.CallTo(() => _pizzasRepository.Remove(A<Pizza>._))
+                .MustHaveHappened();
+        }
     }
 }

@@ -26,5 +26,10 @@ namespace PizzaOnline.Services
 
             return _pizzasRepository.Persist(pizza);
         }
+
+        public void Remove(Pizza pizza)
+        {
+            _pizzasRepository.Remove(pizza);
+        }
     }
 }

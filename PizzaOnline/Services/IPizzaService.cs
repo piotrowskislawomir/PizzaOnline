@@ -10,5 +10,6 @@ namespace PizzaOnline.Services
     public interface IPizzaService
     {
         Pizza Add(Pizza pizza);
+        void Remove(Pizza pizza);
     }
 }

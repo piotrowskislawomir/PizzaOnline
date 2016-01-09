@@ -10,6 +10,9 @@ namespace PizzaOnline.Api
         {
             Mapper.CreateMap<Ingredient, IngredientModel>();
             Mapper.CreateMap<IngredientModel, Ingredient>().ForMember(s => s.Id, a => a.Ignore());
+
+            Mapper.CreateMap<Pizza, PizzaModel>();
+            Mapper.CreateMap<PizzaModel, Pizza>().ForMember(s => s.Id, a => a.Ignore());
         }
     }
 }
