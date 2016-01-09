@@ -30,7 +30,7 @@ namespace PizzaOnline.Services
 
         public void Remove(Ingredient ingredient)
         {
-           
+            _ingredinetRepository.Remove(ingredient);
         }
     }
 }
