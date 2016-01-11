@@ -3,16 +3,28 @@
 @{
     Layout = "../Shered/_Layout.cshtml";
 }
-
-    Nazwa:<br>
-    <input type="text" name="ame" id="ingredient_name"><br>
-    Cena:<br>
-    <input type="text" name="price" id="ingredient_price">
+<div class="container" >
     
-        <button id="add_ingredient">Dodaj skladnik</button>
+    <table id="ingredients_table" class="table table-striped">
+        <tr>
+            <th>Nazwa: <input type="text" name="ame" id="ingredient_name"></th>
+            <th>Cena: <input type="text" name="price" id="ingredient_price"></th>
+            <th><button id="add_ingredient">Dodaj nowy składnik</button></th>
+        </tr>
+        <tr>
+            <th></th>
+            <th> </th>
+            <th></th>
+        </tr>
+        <tr>
+            <th>Nazwa</th>
+            <th>Cena</th>
+            <th></th>
+        </tr>
+        <h3>BAZA SKŁADNIKÓW</h3>
+        <p>Tutaj znajdują się wszystkie składniki przechowywane w bazie:</p>
+    </table>
 
+    
 
-
-<table class="ingredients_table">
-
-</table>
+</div>
