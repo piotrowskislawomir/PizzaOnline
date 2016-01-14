@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Linq;
 using System.Web.Http;
 using AutoMapper;
 using PizzaOnline.Api.Models;
@@ -37,10 +33,15 @@ namespace PizzaOnline.Api.Controllers
         public IHttpActionResult GetIngredient(int id)
         {
             var ingredient = _ingredientService.Get(id);
-            return Ok(Mapper.Map<IngredientModel>(ingredient));
+            if (ingredient != null)
+            {
+                return Ok(Mapper.Map<IngredientModel>(ingredient));
+            }
+
+            return NotFound();
         }
 
-        [Route("api/ingredients")]
+        [Route("api/ingredient")]
         [HttpGet]
         public IHttpActionResult GetAllIngredients()
         {

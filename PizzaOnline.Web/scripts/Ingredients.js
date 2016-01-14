@@ -59,7 +59,7 @@ function getAllIngredients() {
         $.ajax({
             dataType: "json",
             contentType: "application/json",
-            url: 'http://localhost:5413/api/ingredients',
+            url: 'http://localhost:5413/api/ingredient',
             type: 'GET',
             success: function (data) {
                 for (var i = 0; i < data.length; i++) {
