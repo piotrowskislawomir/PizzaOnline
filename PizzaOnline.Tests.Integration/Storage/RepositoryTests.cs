@@ -5,7 +5,7 @@ using NUnit.Framework;
 using PizzaOnline.Model;
 using PizzaOnline.Storage;
 
-namespace PizzaOnline.Tests.Integration
+namespace PizzaOnline.Tests.Integration.Storage
 {
     [TestFixture]
     public class RepositoryTests
