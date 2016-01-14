@@ -139,11 +139,13 @@
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="scripts\Ingredients.js" />
     <Content Include="scripts\jquery.blockUI.js" />
+    <Content Include="scripts\PizzaCompose.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\IngredientController.cs" />
+    <Compile Include="Controllers\PizzaComposeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -157,6 +159,7 @@
     </Content>
     <Content Include="Views\Shered\_Layout.cshtml" />
     <Content Include="Views\Ingredient\Index.cshtml" />
+    <Content Include="Views\PizzaCompose\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

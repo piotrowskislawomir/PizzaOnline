@@ -56,7 +56,7 @@ namespace PizzaOnline.Tests.Services
         }
 
         [Test]
-        public void Get_ShouldReturnAllIngredientsFromRepository()
+        public void GetAll_ShouldReturnAllIngredientsFromRepository()
         {
             _sut.GetAll();
 
