@@ -15,7 +15,7 @@
         type: 'POST',
         data: ingedientJson,
         success: function () {
-          
+            
             getAllIngredients();
         }
     });
@@ -56,6 +56,7 @@ function getAllIngredients() {
    if ($('#ingredients_table tr').length > 2)
        clearTable();
    
+
         $.ajax({
             dataType: "json",
             contentType: "application/json",

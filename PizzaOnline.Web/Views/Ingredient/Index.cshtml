@@ -3,11 +3,17 @@
 @{
     Layout = "../Shered/_Layout.cshtml";
 }
+
+@section scripts
+{
+    <script src="scripts/Ingredients.js"></script>
+}
+
 <div class="container" >
     
     <table id="ingredients_table" class="table table-striped">
         <tr>
-            <th>Nazwa: <input type="text" name="ame" id="ingredient_name"></th>
+            <th>Nazwa: <input type="text" name="name" id="ingredient_name"></th>
             <th>Cena: <input type="text" name="price" id="ingredient_price"></th>
             <th><button id="add_ingredient">Dodaj nowy składnik</button></th>
         </tr>

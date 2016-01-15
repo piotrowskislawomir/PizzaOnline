@@ -34,12 +34,13 @@ namespace PizzaOnline.Api
     {
         var cors = new EnableCorsAttribute(
             origins: "*",
-            headers: "*",
-            methods: "*");
-        config.EnableCors(cors);
-    }
+            headers: "Accept, Content-Type, Origin",
+            methods: "GET, PUT, POST, DELETE, OPTIONS");
 
-    private static void ConfigureContainer(ContainerBuilder builder)
+            config.EnableCors(cors);
+        }
+
+        private static void ConfigureContainer(ContainerBuilder builder)
         {
             builder.Register(_ => new PizzaOnlineContext("PizzaOnlineConnection")).As<DbContext>();
             builder.RegisterGeneric(typeof(Repository<>)).As(typeof(IRepository<>));

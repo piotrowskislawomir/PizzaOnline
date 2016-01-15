@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
 
-    getAllIngredients();
+    getAllIngredientsForPizza();
 });
 
 function addIngredientToPizza(elem) {
@@ -11,7 +11,7 @@ function addIngredientToPizza(elem) {
 }
 
 
-function getAllIngredients() {
+function getAllIngredientsForPizza() {
 
     if ($('#ingredients_table tr').length > 2)
         clearTable();
@@ -19,7 +19,7 @@ function getAllIngredients() {
     $.ajax({
         dataType: "json",
         contentType: "application/json",
-        url: 'http://localhost:5413/api/ingredients',
+        url: 'http://localhost:5413/api/ingredient',
         type: 'GET',
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
