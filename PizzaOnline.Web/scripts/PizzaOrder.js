@@ -108,9 +108,9 @@ function returnBill(price)
 
 function convertJSonToList(table_obj) {
 
-    alert(table_obj);
+  //  alert(table_obj);
     var Toppingsv = table_obj.Toppings;
-    alert(Toppingsv[0]);
+  //  alert(Toppingsv[0]);
 
 }
 

@@ -50,7 +50,7 @@ function addNewPizzaToMenu() {
     var toppingsTable = [];
 
     for (var i = 0; i < addedItems.length; i++) {
-        toppingsTable[i] = "Id:\"" + addedItems[i] + "\"";
+        toppingsTable[i] = { Id: addedItems[i] };
     }
 
     for (var i = 0; i < addedItems.length; i++) {
