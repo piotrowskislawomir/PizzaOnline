@@ -10,10 +10,11 @@
         <p>Tutaj możesz stworzyć oraz dodać nową pizze do menu</p>
         <tr>
             <th>
-                <div id="total_new_pizza_cost">0.00</div>
+                Koszt składników: <div id="total_new_pizza_cost">0.00</div>
             </th>
-            <th></th>
-            <th><button id="add_new_pizza_to_menu" onclick="addNewPizzaToMenu()">Dodaj nową pizzę do oferty</button></th>
+            <th>Nazwa pizzy: <input type="text" id="new_pizza_name"></th>
+            <th>Cena w menu: <input type="text" id="pizza_compose_cost" value="0.00"></th>
+            <th><button id="add_new_pizza_to_menu" onclick="addNewPizzaToMenu()">Dodaj nową pizzę</button></th>
         </tr>
         <tr>
             <th></th>

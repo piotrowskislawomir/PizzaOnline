@@ -7,16 +7,6 @@ $(document).ready(function () {
     getAllIngredientsToCompose();
 });
 
-function addIngredientToPizza(elem) {
-    
-  
-  //  $("#added_ingredients").append("<tr><th>" + elem.name + "</th><th>" + elem.value + "</th><th>" + elem.id + "</th></tr>");
-    
-    $("#added_ingredients").append("<tr><th>" + elem.name + "</th><th>" + elem.value + "</th><th> <input type=\"checkbox\" onclick=\"checkedIngredient(this)\" name=\"ingredient_chbox\" value=\"" + elem.id + "\"></th></tr>");
-  
-   
-  
-}
 
 function getItemAsObj(id) {
     for (var i = 0; i < ingredientsObj.length; i++) {
@@ -24,13 +14,12 @@ function getItemAsObj(id) {
             return ingredientsObj[i];
         }
     }
-
 }
+
 
 function checkedIngredient(elem) {
 
     var item = getItemAsObj(elem.id);
-
     var price = item.price;
   
     if (elem.checked == true) {
@@ -42,15 +31,6 @@ function checkedIngredient(elem) {
         addedItems.splice(index, 1);
         calculatePizzaCost(-price);
     }
-
-
-
-    for (var i = 0; i < addedItems.length; i++) {
-      //  alert(addedItems[i]);
-
-    }
-   
-
 }
 
 
@@ -59,25 +39,42 @@ function calculatePizzaCost(price) {
     cost = Math.round((cost + price) * 100) / 100;
     $("#total_new_pizza_cost").empty();
     $("#total_new_pizza_cost").append(cost.toString());
+    $("#pizza_compose_cost").empty();
+    $("#pizza_compose_cost").val(cost);
 }
 
 
 function addNewPizzaToMenu() {
-    /*
-    $("#ingredients_table_to_compose").children().each(
-                  function () {
-                      var str = $(this).attr('id');
 
-                      var res = str.split("_");
-                      var id = res[0];
-                      var price = res[1];
+    var toppingsTable = [];
 
+    for (var i = 0; i < addedItems.length; i++) {
+        toppingsTable[i] = "Id:\"" + addedItems[i] + "\"";
+    }
 
-                      sumOrder.push(price);
-                      pizzas.push(id);
-                  });
-    */
-    checkChooseIngredients();
+    for (var i = 0; i < addedItems.length; i++) {
+        alert(toppingsTable[i]);
+    }
+
+           var pizzaModel = {
+
+               Name: $("#new_pizza_name").val(),
+               Price: parseFloat($("#pizza_compose_cost").val()),
+               Toppings : toppingsTable
+           };
+
+           var pizzaModelJson = JSON.stringify(pizzaModel);
+           $.ajax({
+               dataType: "json",
+               contentType: "application/json",
+               url: 'http://localhost:5413/api/pizza',
+               type: 'POST',
+               data: pizzaModelJson,
+               success: function () {
+
+                   alert("ok");
+               }
+           });
 }
 
 

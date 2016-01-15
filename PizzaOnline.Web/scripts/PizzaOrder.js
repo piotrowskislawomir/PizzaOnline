@@ -9,7 +9,9 @@ function Dodaj(elem)
       $("#card_ul_id").append( '<li class=\"cart-item\" id=\"'+elem.id+'_item\">' + elem.name + "<span class=\"cart-item-price\">" + elem.value + "</span><span class=\"cart-item-desc\"><a href=\"#\" id=\"" + elem.id + '_'+elem.value+'\" class=\"cart-button\" onclick=\"removeFromCard(this)\">Usuń</a></span><span class=\"cart-item-price\"></li>');
 	 
 	returnBill(elem.value);
-        
+
+	var jSON = LoadFakeData();
+    convertJSonToList(jSON);
 }
 
 function removeFromCard(elem)
@@ -103,3 +105,35 @@ function returnBill(price)
     $( "#cart_sum" ).append(sum.toString());
 }
 
+
+function convertJSonToList(table_obj) {
+
+    alert(table_obj);
+    var Toppingsv = table_obj.Toppings;
+    alert(Toppingsv[0]);
+
+}
+
+
+function LoadFakeData() {
+   
+
+    var Pizza_1 = '{ "Name" : "Margaritta", "Price" : "10.20",  "Toppings" : [' +
+                        '{ "Id":"290"},' +
+                        '{ "Id":"291"}' +
+        ']}';
+
+    var Pizza_2 = '{ "Name" : "Z szynką", "Price" : "13.20",  "Toppings" : [' +
+                        '{ "Id":"296"},' +
+                        '{ "Id":"293"}' +
+        ']}';
+
+    var jSonArray = [];
+    jSonArray[0] = JSON.parse(Pizza_1);
+    jSonArray[1] = JSON.parse(Pizza_2);
+
+   // alert(jSonArray[0].Name);
+
+    return jSonArray;
+
+}
