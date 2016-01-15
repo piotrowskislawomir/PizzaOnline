@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "~/Views/Shered/_Layout.cshtml";
+}
+
+
+<div class="cart">
+    <div class="cart-top">
+        <h2 class="cart-top-title">Koszyk</h2>
+
+    </div>
+
+
+    <ul id="card_ul_id"></ul>
+    <div class="cart-bottom">
+        <div id="cart_sum">0</div>
+        <a href="#" onclick="orderPizzas()" class="cart-button">Złóż zamówienie</a>
+    </div>
+
+
+</div>
+
+<div class="leftdiv">
+    <div>
+        <table>
+            <tr>
+                <th>Nazwa</th>
+                <th>Cena</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>Pizza z szynką</td>
+                <td>20.56</td>
+                <td> <button type="button" id="2" value="20.56" name="Pizza z szynką" onclick="Dodaj(this)">DODAJ DO KOSZYKA</button></td>
+            </tr>
+            <tr>
+                <td>Kebab w bułce</td>
+                <td>10.56</td>
+                <td><button type="button" id="1" value="10.56" name="Kebab w bułce" onclick="Dodaj(this)">DODAJ DO KOSZYKA</button></td>
+            </tr>
+
+        </table>
+
+
+    </div>
+</div>

@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
 
-    getAllIngredients();
+    getAllIngredients2();
 });
 
 function addIngredientToPizza(elem) {
@@ -11,7 +11,7 @@ function addIngredientToPizza(elem) {
 }
 
 
-function getAllIngredients() {
+function getAllIngredients2() {
 
     if ($('#ingredients_table tr').length > 2)
         clearTable();
