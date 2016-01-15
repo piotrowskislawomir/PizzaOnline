@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using AutoMapper;
 using PizzaOnline.Api.Models;
 using PizzaOnline.Model;
@@ -30,6 +29,37 @@ namespace PizzaOnline.Api
                      PizzasIngredients = s.Toppings.Select(t => new PizzasIngredients()
                      {
                          IngredientId = t.Id.Value
+                     }).ToList()
+                 }
+            );
+
+            Mapper.CreateMap<Order, OrderModel>().ConstructUsing(s =>
+                 new OrderModel()
+                 {
+                     CreationDate = s.CreationDate,
+                     Price = s.Price,
+                     Status = s.Status,
+                     Address = s.Address,
+                     Pizzas = s.OrdersPizzas
+                     .Select(pi => Mapper.Map<PizzaModel>(pi.Pizza)).ToList(),
+                     Ingredients = s.OrdersIngredients
+                     .Select(pi => Mapper.Map<IngredientModel>(pi.Ingredient)).ToList()
+                 }
+            );
+            Mapper.CreateMap<OrderModel, Order>().ConstructUsing(s =>
+                 new Order()
+                 {
+                     CreationDate = s.CreationDate,
+                     Price = s.Price,
+                     Address = s.Address,
+                     Status = s.Status,
+                     OrdersIngredients = s.Ingredients.Select(t => new OrdersIngredients()
+                     {
+                         IngredientId = t.Id.Value
+                     }).ToList(),
+                     OrdersPizzas = s.Pizzas.Select(t => new OrdersPizzas()
+                     {
+                         PizzaId = t.Id.Value
                      }).ToList()
                  }
             );

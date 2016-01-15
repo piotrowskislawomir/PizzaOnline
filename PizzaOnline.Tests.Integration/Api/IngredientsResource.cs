@@ -8,6 +8,7 @@ using RestSharp.Deserializers;
 
 namespace PizzaOnline.Tests.Integration.Api
 {
+    [Ignore]
     [TestFixture]
     public class IngredientsResource : BaseResource
     {
