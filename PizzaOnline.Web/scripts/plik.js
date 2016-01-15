@@ -1,6 +1,6 @@
 
 
-
+var noCheatVar = 0;
 
 function Dodaj(elem)
 {
@@ -26,8 +26,8 @@ function removeFromCard(elem)
 	//$(variable);
 //	alert(document.getElementById("2item"));
 	//$(variable).remove();
-	//alert(document.getElementById(elem.id).href);
-	$("#"+id+"_item").remove();
+    //alert(document.getElementById(elem.id).href);
+  	$("#"+id+"_item").remove();
 	returnBill(-price);
 	
 //returnBill(-(elem.value));
@@ -38,31 +38,48 @@ function orderPizzas()
 {
 //	alert($("#card_ul_id").children().length);
 	//alert($("#card_ul_id").children[0]);
-	
-	var pizzas = [];
+    var sumControl = 0;
+    var pizzas = [];
+    var sumOrder = [];
 	$("#card_ul_id").children().each(
                   function(){
-    				 var str = $(this).attr('id');
+                      var str = $(this).attr('id');
+
  					var res = str.split("_");
-   					var id = res[0];
+ 					var id = res[0];
+ 					var price = res[1];
+
+
+ 					sumOrder.push(price);
 					pizzas.push(id);
 	});
-	
+
+    var endSum = 0;
 	var order = "Zamówiłeś pizze o id:";
 	for(var i=0; i<pizzas.length; i++)
 	{
 		order += " " + pizzas[i];
 	}
+
+	for (var i = 0; i < sumOrder.length; i++) {
+	    endSum += parseFloat(sumOrder[i]);
+    }
+
+	if (Math.round($("#cart_sum").html() * 100) / 100 != noCheatVar)
+    {
+        alert("jesteś oszutem Ty figlarzu Ty ;)");
+	} else {
+	    alert(order);
+	}
 	
-	alert(order);
 	
 }
 
 
 function returnBill(price)
 {
-	//var sum = sum + price;
-	var war = 0;
+    //var sum = sum + price;
+    var war = 0;
 	var price_int = 0;;
 	var war_int = 0;
 	
@@ -72,6 +89,9 @@ function returnBill(price)
 	price_int = parseFloat(price) || 0;
     war_int = parseFloat(war) || 0;
 	
+    noCheatVar += price_int;
+
+
 	var sum = 0;
 	sum = Math.round((price_int + war_int) * 100) / 100;
 	//alert(price_int);
