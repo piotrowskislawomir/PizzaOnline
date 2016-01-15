@@ -140,12 +140,15 @@
     <Content Include="scripts\Ingredients.js" />
     <Content Include="scripts\jquery.blockUI.js" />
     <Content Include="scripts\PizzaCompose.js" />
+    <Content Include="scripts\PizzaOrder.js" />
+    <Content Include="styles\card_style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\IngredientController.cs" />
     <Compile Include="Controllers\PizzaComposeController.cs" />
+    <Compile Include="Controllers\PizzaOrderController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -160,6 +163,7 @@
     <Content Include="Views\Shered\_Layout.cshtml" />
     <Content Include="Views\Ingredient\Index.cshtml" />
     <Content Include="Views\PizzaCompose\Index.cshtml" />
+    <Content Include="Views\PizzaOrder\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

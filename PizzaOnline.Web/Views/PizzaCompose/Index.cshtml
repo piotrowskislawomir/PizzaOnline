@@ -7,15 +7,18 @@
     <script src="scripts/PizzaCompose.js"></script>
 }
 
-<div class="container">
 
+<div class="container">
     <table id="ingredients_table_to_compose" class="table table-striped">
         <h3>KOMPOZYCJA PIZZY</h3>
         <p>Tutaj możesz stworzyć oraz dodać nową pizze do menu</p>
         <tr>
-            <th></th>
-            <th></th>
-            <th><button id="add_new_pizza_to_menu">Dodaj nową pizzę do oferty</button></th>
+            <th>
+                Koszt składników: <div id="total_new_pizza_cost">0.00</div>
+            </th>
+            <th>Nazwa pizzy: <input type="text" id="new_pizza_name"></th>
+            <th>Cena w menu: <input type="text" id="pizza_compose_cost" value="0.00"></th>
+            <th><button id="add_new_pizza_to_menu" onclick="addNewPizzaToMenu()">Dodaj nową pizzę</button></th>
         </tr>
         <tr>
             <th></th>
@@ -25,19 +28,22 @@
         <tr>
             <th>Nazwa</th>
             <th>Cena</th>
-            <th></th>
+            <th>Dodawanie składnika</th>
         </tr>
 
 
     </table>
 
-    <table id="added_ingredients">
-        
-    </table>
-
-
-
+    <table id="added_ingredients"></table>
 </div>
+
+
+
+
+
+
+
+
 
 
 

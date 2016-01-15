@@ -1,5 +1,4 @@
 ﻿$(document).ready(function() {
-
     $("#add_ingredient").click(
     function (event) {
     var ingredient = {
@@ -23,7 +22,6 @@
       $('#ingredient_price').val("");
       event.preventDefault();
     });
-    
     getAllIngredients();
 });
 
@@ -52,7 +50,7 @@ function clearTable() {
 }
 
 function getAllIngredients() {
-    
+  
    if ($('#ingredients_table tr').length > 2)
        clearTable();
    
