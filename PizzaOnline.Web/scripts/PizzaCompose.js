@@ -35,7 +35,6 @@ function checkedIngredient(elem) {
 }
 
 
-
 function calculatePizzaCost(price) {
     cost = Math.round((cost + price) * 100) / 100;
     $("#total_new_pizza_cost").empty();
@@ -45,26 +44,29 @@ function calculatePizzaCost(price) {
 }
 
 
-function addNewPizzaToMenu() {
-
+function createPizzaModel() {
+    
     var toppingsTable = [];
 
     for (var i = 0; i < addedItems.length; i++) {
         toppingsTable[i] = { Id: addedItems[i] };
     }
 
-    for (var i = 0; i < addedItems.length; i++) {
-        alert(toppingsTable[i]);
-    }
+    var pizzaModel = {
+        Name: $("#new_pizza_name").val(),
+        Price: parseFloat($("#pizza_compose_cost").val()),
+        Toppings: toppingsTable
+    };
 
-           var pizzaModel = {
+    return pizzaModel;
+}
 
-               Name: $("#new_pizza_name").val(),
-               Price: parseFloat($("#pizza_compose_cost").val()),
-               Toppings : toppingsTable
-           };
 
+function addNewPizzaToMenu() {
+
+           var pizzaModel = createPizzaModel();
            var pizzaModelJson = JSON.stringify(pizzaModel);
+
            $.ajax({
                dataType: "json",
                contentType: "application/json",
@@ -72,8 +74,7 @@ function addNewPizzaToMenu() {
                type: 'POST',
                data: pizzaModelJson,
                success: function () {
-
-                   alert("ok");
+                //alert("ok");
                }
            });
 }
@@ -81,7 +82,6 @@ function addNewPizzaToMenu() {
 
 function getAllIngredientsToCompose() {
 
-    
     $.ajax({
         dataType: "json",
         contentType: "application/json",
