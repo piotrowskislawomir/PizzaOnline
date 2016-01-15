@@ -27,5 +27,7 @@ namespace PizzaOnline.Storage
         public virtual DbSet<Ingredient> Ingredients { get; set; }
 
         public virtual DbSet<Pizza> Pizzas { get; set; }
+
+        public virtual DbSet<Order> Orders { get; set; }
     }
 }

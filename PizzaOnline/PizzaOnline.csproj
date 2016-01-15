@@ -83,17 +83,29 @@
     <Compile Include="Migrations\201601091421081_pizza ingredient many-to-many added joined table.Designer.cs">
       <DependentUpon>201601091421081_pizza ingredient many-to-many added joined table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201601151929461_add orders.cs" />
+    <Compile Include="Migrations\201601151929461_add orders.Designer.cs">
+      <DependentUpon>201601151929461_add orders.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\IEntity.cs" />
     <Compile Include="Model\Ingredient.cs" />
     <Compile Include="Model\ModelBase.cs" />
+    <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\OrdersIngredients.cs" />
+    <Compile Include="Model\OrdersPizzas.cs" />
+    <Compile Include="Model\OrderStatuses.cs" />
     <Compile Include="Model\Pizza.cs" />
     <Compile Include="Model\PizzasIngredients.cs" />
     <Compile Include="Services\IIngredientService.cs" />
     <Compile Include="Services\IngredientService.cs" />
+    <Compile Include="Services\IOrderService.cs" />
     <Compile Include="Services\IPizzaService.cs" />
+    <Compile Include="Services\OrderService.cs" />
     <Compile Include="Services\PizzaService.cs" />
+    <Compile Include="Storage\IOrderRepository.cs" />
     <Compile Include="Storage\IPizzaRepository.cs" />
+    <Compile Include="Storage\OrderRepository.cs" />
     <Compile Include="Storage\PizzaOnlineContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Storage\IRepository.cs" />
@@ -128,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601091421081_pizza ingredient many-to-many added joined table.resx">
       <DependentUpon>201601091421081_pizza ingredient many-to-many added joined table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601151929461_add orders.resx">
+      <DependentUpon>201601151929461_add orders.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
