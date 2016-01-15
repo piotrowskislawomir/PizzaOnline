@@ -11,7 +11,7 @@ namespace PizzaOnline.Api.Models
         public decimal Price { get; set; }
         public string Status { get; set; }
 
-        public IEnumerable<PizzaModel> Pizzas { get; set; }
-        public IEnumerable<IngredientModel> Ingredients { get; set; }
+        public List<PizzaModel> Pizzas { get; set; }
+        public List<IngredientModel> Ingredients { get; set; }
     }
 }

@@ -2,7 +2,6 @@
 using System.Net;
 using NUnit.Framework;
 using PizzaOnline.Api.Models;
-using PizzaOnline.Model;
 using RestSharp;
 using RestSharp.Deserializers;
 
@@ -25,7 +24,7 @@ namespace PizzaOnline.Tests.Integration.Api
         public void Post_ShouldReturnStatusCodeCreated()
         {
             var request = new RestRequest(ResourceName, Method.POST);
-            var ingredient = new Ingredient
+            var ingredient = new IngredientModel
             {
                 Name = "ingredient1",
                 Price = 123
@@ -42,7 +41,7 @@ namespace PizzaOnline.Tests.Integration.Api
         public void Delete_ShouldReturnStatusCodeOk()
         {
             var postRequest = new RestRequest(ResourceName, Method.POST);
-            var ingredient = new Ingredient
+            var ingredient = new IngredientModel
             {
                 Name = "ingredient1",
                 Price = 123
@@ -68,7 +67,7 @@ namespace PizzaOnline.Tests.Integration.Api
         public void GetById_ShouldReturnStatusCodeOk()
         {
             var postRequest = new RestRequest(ResourceName, Method.POST);
-            var expectedIngredient = new Ingredient
+            var expectedIngredient = new IngredientModel
             {
                 Name = "ingredient1",
                 Price = 123
@@ -107,7 +106,7 @@ namespace PizzaOnline.Tests.Integration.Api
         public void Get_ShouldReturnStatusCodeOk()
         {
             var postRequest = new RestRequest(ResourceName, Method.POST);
-            var expectedIngredient = new Ingredient
+            var expectedIngredient = new IngredientModel
             {
                 Name = "ingredient1",
                 Price = 123

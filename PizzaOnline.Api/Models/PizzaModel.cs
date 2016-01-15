@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
 namespace PizzaOnline.Api.Models
 {
@@ -10,6 +7,6 @@ namespace PizzaOnline.Api.Models
         public int? Id { get; set; }
         public string Name { get; set; }
         public decimal Price { get; set; }
-        public IEnumerable<IngredientModel> Toppings { get; set; }
+        public List<IngredientModel> Toppings { get; set; }
     }
 }

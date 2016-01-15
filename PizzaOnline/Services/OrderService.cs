@@ -25,6 +25,8 @@ namespace PizzaOnline.Services
                 throw new ArgumentException("The order has to contain pizzas.");
             }
 
+            order.Status = OrderStatuses.Created.ToString();
+
             var orderDb = _orderRepository.Persist(order);
             if (orderDb != null && orderDb.Id.HasValue)
             {
