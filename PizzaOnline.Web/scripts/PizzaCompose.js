@@ -80,7 +80,7 @@ function addNewPizzaToMenu() {
                type: 'POST',
                data: pizzaModelJson,
                success: function () {
-                //alert("ok");
+                   window.location.href = "http://localhost:5453/Pizza";
                }
            });
 }

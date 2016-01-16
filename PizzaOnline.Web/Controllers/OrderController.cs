@@ -6,10 +6,15 @@ using System.Web.Mvc;
 
 namespace PizzaOnline.Web.Controllers
 {
-    public class PizzaOrderController : Controller
+    public class OrderController : Controller
     {
         // GET: PizzaOrder
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Create()
         {
             return View();
         }
