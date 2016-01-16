@@ -9,5 +9,8 @@ namespace PizzaOnline.Storage
 {
     public interface IOrderRepository : IRepository<Order>
     {
+        Order GetById(int id);
+        IEnumerable<Order> GetOrders();
+       
     }
 }

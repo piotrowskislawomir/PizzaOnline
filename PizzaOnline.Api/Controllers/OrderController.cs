@@ -29,7 +29,7 @@ namespace PizzaOnline.Api.Controllers
 
         [Route("api/order")]
         [HttpPost]
-        public IHttpActionResult CreatePizza(OrderModel orderModel)
+        public IHttpActionResult CreateOrder(OrderModel orderModel)
         {
             var order = Mapper.Map<Order>(orderModel);
 
@@ -38,6 +38,24 @@ namespace PizzaOnline.Api.Controllers
             return CreatedAtRoute("GetOrderById",
                 new { id = orderDb.Id },
                 Mapper.Map<OrderModel>(orderDb));
+        }
+
+        [Route("api/order/{id}")]
+        [HttpPut]
+        public IHttpActionResult UpdateOrder(int id, OrderModel orderModel)
+        {
+            var orderDb = _orderService.Update(id, orderModel.Status);
+
+            return Ok(Mapper.Map<OrderModel>(orderDb));
+        }
+
+        [Route("api/order")]
+        [HttpGet]
+        public IHttpActionResult GetOrders()
+        {
+            var orders = _orderService.GetOrders();
+
+            return Ok(orders.Select(Mapper.Map<OrderModel>));
         }
     }
 }

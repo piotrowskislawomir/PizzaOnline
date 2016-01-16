@@ -100,5 +100,14 @@ namespace PizzaOnline.Tests.Services
             A.CallTo(() => _orderRepository.FindById(A<int>._))
                 .MustHaveHappened();
         }
+
+        [Test]
+        public void GetOrders_ShouldCallGetAllOrders()
+        {
+            _sut.GetOrders();
+
+            A.CallTo(() => _orderRepository.GetOrders())
+                .MustHaveHappened();
+        }
     }
 }

@@ -23,8 +23,19 @@ namespace PizzaOnline.Storage
             {
                 return context.Set<Order>()
                     .Include(o => o.OrdersIngredients.Select(i => i.Ingredient))
-                    .Include(o => o.OrdersPizzas.Select(p => p.Pizza))
+                    .Include(o => o.OrdersPizzas.Select(p => p.Pizza.PizzasIngredients.Select(i => i.Ingredient)))
                     .FirstOrDefault(x => x.Id == id);
+            }
+        }
+
+        public IEnumerable<Order> GetOrders()
+        {
+            using (var context = _contextFactory())
+            {
+                return context.Set<Order>()
+                    .Include(o => o.OrdersIngredients.Select(i => i.Ingredient))
+                    .Include(o => o.OrdersPizzas.Select(p => p.Pizza.PizzasIngredients.Select(i => i.Ingredient)))
+                    .ToList();
             }
         }
     }

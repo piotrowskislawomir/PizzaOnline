@@ -17,7 +17,8 @@ namespace PizzaOnline.Api
                  {
                      Name = s.Name,
                      Price = s.Price,
-                     Toppings = s.PizzasIngredients?.Select(pi => Mapper.Map<IngredientModel>(pi.Ingredient)).ToList()
+                     Toppings = s.PizzasIngredients != null ?
+                     s.PizzasIngredients.Select(pi => Mapper.Map<IngredientModel>(pi.Ingredient)).ToList() : null
                  }
             );
             Mapper.CreateMap<PizzaModel, Pizza>().ConstructUsing(s =>
@@ -25,10 +26,10 @@ namespace PizzaOnline.Api
                  {
                      Name = s.Name,
                      Price = s.Price,
-                     PizzasIngredients = s.Toppings?.Select(t => new PizzasIngredients()
+                     PizzasIngredients = s.Toppings != null ? s.Toppings.Select(t => new PizzasIngredients()
                      {
                          IngredientId = t.Id.Value
-                     }).ToList()
+                     }).ToList() : null
                  }
             );
 
@@ -39,10 +40,10 @@ namespace PizzaOnline.Api
                      Price = s.Price,
                      Status = s.Status,
                      Address = s.Address,
-                     Pizzas = s.OrdersPizzas?
-                     .Select(pi => Mapper.Map<PizzaModel>(pi.Pizza)).ToList(),
-                     Ingredients = s.OrdersIngredients?
-                     .Select(pi => Mapper.Map<IngredientModel>(pi.Ingredient)).ToList()
+                     Pizzas = s.OrdersPizzas != null ? s.OrdersPizzas
+                     .Select(pi => Mapper.Map<PizzaModel>(pi.Pizza)).ToList() : null,
+                     Ingredients =s.OrdersIngredients != null ? s.OrdersIngredients?
+                     .Select(pi => Mapper.Map<IngredientModel>(pi.Ingredient)).ToList() : null
                  }
             );
             Mapper.CreateMap<OrderModel, Order>().ConstructUsing(s =>
@@ -52,14 +53,15 @@ namespace PizzaOnline.Api
                      Price = s.Price,
                      Address = s.Address,
                      Status = s.Status,
-                     OrdersIngredients = s.Ingredients?.Select(t => new OrdersIngredients()
+                     OrdersIngredients = s.Ingredients != null ? 
+                     s.Ingredients.Select(t => new OrdersIngredients()
                      {
                          IngredientId = t.Id.Value
-                     }).ToList(),
-                     OrdersPizzas = s.Pizzas?.Select(t => new OrdersPizzas()
+                     }).ToList() : null,
+                     OrdersPizzas = s.Pizzas != null  ? s.Pizzas.Select(t => new OrdersPizzas()
                      {
                          PizzaId = t.Id.Value
-                     }).ToList()
+                     }).ToList() : null
                  }
             );
         }

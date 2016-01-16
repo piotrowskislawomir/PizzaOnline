@@ -10,5 +10,7 @@ namespace PizzaOnline.Services
     public interface IOrderService
     {
         Order Add(Order order);
+        IEnumerable<Order> GetOrders();
+        Order Update(int id, string status);
     }
 }

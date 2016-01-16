@@ -31,7 +31,25 @@ namespace PizzaOnline.Services
             var orderDb = _orderRepository.Persist(order);
             if (orderDb != null && orderDb.Id.HasValue)
             {
-                return _orderRepository.FindById(orderDb.Id.Value);
+                return _orderRepository.GetById(orderDb.Id.Value);
+            }
+
+            return null;
+        }
+
+        public IEnumerable<Order> GetOrders()
+        {
+            return _orderRepository.GetOrders();
+        }
+
+        public Order Update(int id, string status)
+        {
+            var orderDb = _orderRepository.GetById(id);
+
+            if (orderDb != null)
+            {
+                orderDb.Status = status.ToString();
+                return _orderRepository.Persist(orderDb);
             }
 
             return null;
