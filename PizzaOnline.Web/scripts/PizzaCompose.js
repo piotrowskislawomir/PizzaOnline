@@ -38,9 +38,9 @@ function checkedIngredient(elem) {
 function calculatePizzaCost(price) {
     cost = Math.round((cost + price) * 100) / 100;
     $("#total_new_pizza_cost").empty();
-    $("#total_new_pizza_cost").append(cost.toString());
+    $("#total_new_pizza_cost").append(cost.toFixed(2).toString());
     $("#pizza_compose_cost").empty();
-    $("#pizza_compose_cost").val(cost);
+    $("#pizza_compose_cost").val(cost.toFixed(2));
 }
 
 
@@ -59,6 +59,12 @@ function createPizzaModel() {
     };
 
     return pizzaModel;
+}
+
+function checkPizzasInMenu() {
+    // window.location.replace("")
+    alert("tu przekierowanie do listy wszystki pizz");
+
 }
 
 
@@ -90,7 +96,7 @@ function getAllIngredientsToCompose() {
         success: function (data) {
             for (var i = 0; i < data.length; i++) {
                 ingredientsObj[i] = data[i];
-                $("#ingredients_table_to_compose").append("<tr><th>" + data[i].name + "</th><th>" + data[i].price + "</th>" +
+                $("#ingredients_table_to_compose").append("<tr><th>" + data[i].name + "</th><th>" + data[i].price.toFixed(2) + "</th>" +
                     "<th> <input type=\"checkbox\" name=\"" + data[i].price + "\" id=\"" + data[i].id + "\" onclick=\"checkedIngredient(this)\"></th></tr>");
             }
         }
