@@ -45,7 +45,7 @@ namespace PizzaOnline.Services
 
         public IEnumerable<Pizza> GetAllPizzas()
         {
-            return null;
+            return _pizzasRepository.GetAllWithToppings();
         } 
       
    
