@@ -1,139 +1,78 @@
+var allPizzasItems = [];
+var controlOrderPizzaItems = [];
+var orderPrice = 0;
+
+$(document).ready(function () {
+
+    getAllPizzasToMenu();
+    $('[data-toggle="tooltip"]').tooltip();
+
+});
 
 
-var noCheatVar = 0;
+function addPizzaToCard(elem) {
 
-function Dodaj(elem)
-{
-	var i;
-	//alert($(".cart-top"));
-      $("#card_ul_id").append( '<li class=\"cart-item\" id=\"'+elem.id+'_item\">' + elem.name + "<span class=\"cart-item-price\">" + elem.value + "</span><span class=\"cart-item-desc\"><a href=\"#\" id=\"" + elem.id + '_'+elem.value+'\" class=\"cart-button\" onclick=\"removeFromCard(this)\">Usuń</a></span><span class=\"cart-item-price\"></li>');
+    var choosePizzaitem = allPizzasItems[elem.id - 1];
+
+    controlOrderPizzaItems.push(choosePizzaitem);
+    $("#card_ul_id").append('<li class=\"cart-item\" id=\"' + choosePizzaitem.id + '_item\">' + choosePizzaitem.name + "<span class=\"cart-item-price\">" + choosePizzaitem.price + "</span><span class=\"cart-item-desc\"><a href=\"#\" id=\"" + choosePizzaitem.id + '\" class=\"cart-button\" onclick=\"removeFromCard(this)\">Usuń</a></span><span class=\"cart-item-price\"></li>');
 	 
-	returnBill(elem.value);
-
-	var jSON = LoadFakeData();
-    convertJSonToList(jSON);
+    returnBill(choosePizzaitem.price);
 }
 
-function removeFromCard(elem)
-{
-	var str = elem.id;
-	var res = str.split("_");
-	var id = res[0];
-	var price = res[1];
-//	alert(id);
-	//alert(price);
-//	var variable = '\'#'+elem.id+'\'';
-	//alert(variable);
-	//alert($("\"#"+elem.id+"_item\""));
-	//$(variable);
-//	alert(document.getElementById("2item"));
-	//$(variable).remove();
-    //alert(document.getElementById(elem.id).href);
-  	$("#"+id+"_item").remove();
-	returnBill(-price);
-	
-//returnBill(-(elem.value));
-	
+function removeFromCard(elem) {
+
+    var elementToRemoveFromCard = allPizzasItems[elem.id - 1];
+
+    controlOrderPizzaItems.splice(elem.id - 1, 1);
+    $("#" + elementToRemoveFromCard.id+ "_item").remove();
+
+    returnBill(-elementToRemoveFromCard.price);
 }
 
 function orderPizzas()
 {
-//	alert($("#card_ul_id").children().length);
-	//alert($("#card_ul_id").children[0]);
-    var sumControl = 0;
-    var pizzas = [];
-    var sumOrder = [];
-	$("#card_ul_id").children().each(
-                  function(){
-                      var str = $(this).attr('id');
+    var order = "Zamówiłeś pizze o id:";
 
- 					var res = str.split("_");
- 					var id = res[0];
- 					var price = res[1];
-
-
- 					sumOrder.push(price);
-					pizzas.push(id);
-	});
-
-    var endSum = 0;
-	var order = "Zamówiłeś pizze o id:";
-	for(var i=0; i<pizzas.length; i++)
-	{
-		order += " " + pizzas[i];
-	}
-
-	for (var i = 0; i < sumOrder.length; i++) {
-	    endSum += parseFloat(sumOrder[i]);
+    for (var i = 0; i < controlOrderPizzaItems.length; i++) {
+        order += " " + controlOrderPizzaItems[i].id;
     }
 
-	if (Math.round($("#cart_sum").html() * 100) / 100 != noCheatVar)
-    {
-        alert("jesteś oszutem Ty figlarzu Ty ;)");
-	} else {
-	    alert(order);
-	}
-	
-	
-}
+    order += " na łączną kwotę " + orderPrice;
 
+    alert(order);
+}
 
 function returnBill(price)
 {
-    //var sum = sum + price;
-    var war = 0;
-	var price_int = 0;;
-	var war_int = 0;
+    orderPrice = Math.round((orderPrice + price) * 100) / 100;
 	
-	war = Math.round($("#cart_sum").html() * 100) / 100;
-	//alert(war);
-	
-	price_int = parseFloat(price) || 0;
-    war_int = parseFloat(war) || 0;
-	
-    noCheatVar += price_int;
-
-
-	var sum = 0;
-	sum = Math.round((price_int + war_int) * 100) / 100;
-	//alert(price_int);
-	//alert(war_int);
-	
-	//Math.round($("#cart_sum").html() * 100) / 100;
-	
-	$( "#cart_sum" ).empty();
-    $( "#cart_sum" ).append(sum.toString());
+	$("#cart_sum" ).empty();
+	$("#cart_sum").append(orderPrice.toString());
 }
 
 
-function convertJSonToList(table_obj) {
 
-  //  alert(table_obj);
-    var Toppingsv = table_obj.Toppings;
-  //  alert(Toppingsv[0]);
+function getAllPizzasToMenu() {
+  
+    $.ajax({
+        dataType: "json",
+        contentType: "application/json",
+        url: 'http://localhost:5413/api/pizza',
+        type: 'GET',
+        success: function(data) {
+            for (var i = 0; i < data.length; i++) {
+                var ingredients = "";
+                allPizzasItems[i] = data[i];
+                for (var j = 0; j < data[i].toppings.length; j++) { ingredients += " " + data[i].toppings[j].name; }
 
-}
+                $("#all_pizzas_table").append("<tr><th title=\"Składniki wybranej pizzy: " + ingredients + "\"> " + data[i].name + "</br><font size=\"1\">" + ingredients + "</font></th><th>" + data[i].price + "</th>" +
+         "<th> <button type=\"button\" id=\"" + data[i].id + "\" onclick=\"addPizzaToCard(this)\">Wybierz</th></tr>");
+     
+            }
+        }
+    });
 
-
-function LoadFakeData() {
    
-
-    var Pizza_1 = '{ "Name" : "Margaritta", "Price" : "10.20",  "Toppings" : [' +
-                        '{ "Id":"290"},' +
-                        '{ "Id":"291"}' +
-        ']}';
-
-    var Pizza_2 = '{ "Name" : "Z szynką", "Price" : "13.20",  "Toppings" : [' +
-                        '{ "Id":"296"},' +
-                        '{ "Id":"293"}' +
-        ']}';
-
-    var jSonArray = [];
-    jSonArray[0] = JSON.parse(Pizza_1);
-    jSonArray[1] = JSON.parse(Pizza_2);
-
-   // alert(jSonArray[0].Name);
-
-    return jSonArray;
 
 }

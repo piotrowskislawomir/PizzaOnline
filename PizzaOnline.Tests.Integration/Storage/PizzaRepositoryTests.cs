@@ -110,6 +110,7 @@ namespace PizzaOnline.Tests.Integration.Storage
         }
 
 
+
         [Test]
         public void GetByIdWithToppingsd_ShouldReturnEmptyCollectionOfIngredients_WhenIngredientsWereNotDefined()
         {
