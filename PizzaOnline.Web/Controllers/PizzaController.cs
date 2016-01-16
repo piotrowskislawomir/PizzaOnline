@@ -6,10 +6,14 @@ using System.Web.Mvc;
 
 namespace PizzaOnline.Web.Controllers
 {
-    public class PizzaComposeController : Controller
+    public class PizzaController : Controller
     {
-        // GET: PizzaCompose
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Compose()
         {
             return View();
         }

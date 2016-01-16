@@ -8,8 +8,13 @@ namespace PizzaOnline.Web.Controllers
 {
     public class OrderController : Controller
     {
-        // GET: Order
+        // GET: PizzaOrder
         public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult Create()
         {
             return View();
         }
