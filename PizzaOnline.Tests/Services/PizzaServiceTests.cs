@@ -123,6 +123,15 @@ namespace PizzaOnline.Tests.Services
                 MustHaveHappened();
         }
 
+        [Test]
+        public void GetAll_ShouldCallGetAllFromRepository()
+        {
+            _sut.GetAllPizzas();
+           
+            A.CallTo(() => _pizzasRepository.GetAllWithToppings())
+                .MustHaveHappened();
+        }
+
       
     }
 }

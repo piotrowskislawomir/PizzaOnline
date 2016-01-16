@@ -49,5 +49,15 @@ namespace PizzaOnline.Api.Controllers
                 new { id = pizzaDb.Id },
                 Mapper.Map<PizzaModel>(pizzaDb));
         }
+
+        [Route("api/pizza")]
+        [HttpGet]
+        public IHttpActionResult GetAllPizzas()
+        {
+            var pizzas = _pizzaService.GetAllPizzas();
+            return Ok(pizzas.Select(Mapper.Map<PizzaModel>));
+        }
+
+
     }
 }

@@ -12,6 +12,7 @@ namespace PizzaOnline.Services
         Pizza Add(Pizza pizza);
         void Remove(Pizza pizza);
         Pizza Get(int id);
-       
+        IEnumerable<Pizza> GetAllPizzas();
+
     }
 }

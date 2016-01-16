@@ -43,8 +43,12 @@ namespace PizzaOnline.Services
             return _pizzasRepository.GetByIdWithToppings(id);
         }
 
+        public IEnumerable<Pizza> GetAllPizzas()
+        {
+            return null;
+        } 
       
-    
+   
 
        
     }

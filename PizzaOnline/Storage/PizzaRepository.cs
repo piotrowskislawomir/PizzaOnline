@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using PizzaOnline.Model;
@@ -21,6 +22,16 @@ namespace PizzaOnline.Storage
                 return context.Set<Pizza>()
                     .Include(p => p.PizzasIngredients.Select(i => i.Ingredient))
                     .FirstOrDefault(x => x.Id == id);
+            }
+        }
+
+        public IEnumerable<Pizza> GetAllWithToppings()
+        {
+            using (var context = _contextFactory())
+            {
+                return context.Set<Pizza>()
+                    .Include(p => p.PizzasIngredients.Select(i => i.Ingredient))
+                    .ToList();
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System.Configuration;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using PizzaOnline.Api.Models;
 using TechTalk.SpecFlow;
@@ -11,8 +12,9 @@ namespace PizzaOnline.Web.Tests.Steps
     [Binding]
     public class IngredientFeatureSteps
     {
+        // private ChromeDriver _driver;
         private FirefoxDriver _driver;
-        private readonly string _webUrl;
+         private readonly string _webUrl;
 
         public IngredientFeatureSteps()
         {
@@ -23,6 +25,7 @@ namespace PizzaOnline.Web.Tests.Steps
         public void GivenIHaveStartedBrowser()
         {
             _driver = new FirefoxDriver(/*new FirefoxBinary(@"C:\Program Files (x86)\Mozilla Firefox\firefox.exe"), new FirefoxProfile()*/);
+            //_driver = new ChromeDriver();
         }
 
         [Given(@"I have navigated to (.*) page")]
