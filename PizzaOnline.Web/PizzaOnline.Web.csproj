@@ -149,6 +149,7 @@
     <Compile Include="Controllers\IngredientController.cs" />
     <Compile Include="Controllers\PizzaComposeController.cs" />
     <Compile Include="Controllers\PizzaOrderController.cs" />
+    <Compile Include="Controllers\PizzaRemoveController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -164,6 +165,7 @@
     <Content Include="Views\Ingredient\Index.cshtml" />
     <Content Include="Views\PizzaCompose\Index.cshtml" />
     <Content Include="Views\PizzaOrder\Index.cshtml" />
+    <Content Include="Views\PizzaRemove\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

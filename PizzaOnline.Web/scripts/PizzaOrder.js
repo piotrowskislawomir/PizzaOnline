@@ -30,17 +30,33 @@ function removeFromCard(elem) {
     returnBill(-elementToRemoveFromCard.price);
 }
 
-function orderPizzas()
-{
+function orderPizzas() {
+
+    if (orderPrice == 0) {
+        alert("Koszyk zamówienia nie może być pusty");
+        return;
+    }
+
+    var orderAddress = inputOrderAddres();
+
     var order = "Zamówiłeś pizze o id:";
 
     for (var i = 0; i < controlOrderPizzaItems.length; i++) {
         order += " " + controlOrderPizzaItems[i].id;
     }
 
-    order += " na łączną kwotę " + orderPrice;
+    order += " na łączną kwotę " + orderPrice  + " pod adres: " + orderAddress;
 
     alert(order);
+}
+
+function inputOrderAddres() {
+
+    var address = prompt("Proszę podać adres zamówienia:", "");
+
+    while (address == "") address = prompt("Proszę podać adres zamówienia:", "");
+   
+    return address;
 }
 
 function returnBill(price)
@@ -75,5 +91,5 @@ function getAllPizzasToMenu() {
     });
 
    
-
+   
 }
