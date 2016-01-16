@@ -26,6 +26,7 @@ namespace PizzaOnline.Services
             }
 
             order.Status = OrderStatuses.Created.ToString();
+            order.CreationDate = DateTimeOffset.Now;
 
             var orderDb = _orderRepository.Persist(order);
             if (orderDb != null && orderDb.Id.HasValue)
