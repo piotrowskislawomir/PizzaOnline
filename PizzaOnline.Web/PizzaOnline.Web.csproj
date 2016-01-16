@@ -141,12 +141,14 @@
     <Content Include="scripts\jquery.blockUI.js" />
     <Content Include="scripts\PizzaCompose.js" />
     <Content Include="scripts\PizzaOrder.js" />
+    <Content Include="scripts\PizzaRemove.js" />
     <Content Include="styles\card_style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\IngredientController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\PizzaComposeController.cs" />
     <Compile Include="Controllers\PizzaOrderController.cs" />
     <Compile Include="Controllers\PizzaRemoveController.cs" />
@@ -176,6 +178,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Order\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
