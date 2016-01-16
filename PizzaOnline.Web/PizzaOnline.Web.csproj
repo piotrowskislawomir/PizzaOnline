@@ -139,6 +139,7 @@
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="scripts\Ingredients.js" />
     <Content Include="scripts\jquery.blockUI.js" />
+    <Content Include="scripts\Pizza.js" />
     <Content Include="scripts\PizzaCompose.js" />
     <Content Include="scripts\PizzaOrder.js" />
     <Content Include="scripts\PizzaRemove.js" />
@@ -148,9 +149,8 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\IngredientController.cs" />
+    <Compile Include="Controllers\PizzaController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
-    <Compile Include="Controllers\PizzaComposeController.cs" />
-    <Compile Include="Controllers\PizzaOrderController.cs" />
     <Compile Include="Controllers\PizzaRemoveController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -165,8 +165,10 @@
     </Content>
     <Content Include="Views\Shered\_Layout.cshtml" />
     <Content Include="Views\Ingredient\Index.cshtml" />
-    <Content Include="Views\PizzaCompose\Index.cshtml" />
-    <Content Include="Views\PizzaOrder\Index.cshtml" />
+    <Content Include="Views\Pizza\Index.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Pizza\Compose.cshtml" />
+    <Content Include="Views\Order\Create.cshtml" />
     <Content Include="Views\PizzaRemove\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
