@@ -143,7 +143,6 @@
     <Content Include="scripts\Pizza.js" />
     <Content Include="scripts\PizzaCompose.js" />
     <Content Include="scripts\PizzaOrder.js" />
-    <Content Include="scripts\PizzaRemove.js" />
     <Content Include="styles\card_style.css" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -152,7 +151,6 @@
     <Compile Include="Controllers\IngredientController.cs" />
     <Compile Include="Controllers\PizzaController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
-    <Compile Include="Controllers\PizzaRemoveController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -170,7 +168,6 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Pizza\Compose.cshtml" />
     <Content Include="Views\Order\Create.cshtml" />
-    <Content Include="Views\PizzaRemove\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
