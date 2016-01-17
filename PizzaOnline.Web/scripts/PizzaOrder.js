@@ -29,6 +29,23 @@ function removeFromCard(elem) {
     returnBill(-elementToRemoveFromCard.price);
 }
 
+function createOrderModel(orderAddress) {
+
+    var pizzasTable = [];
+
+    for (var i = 0; i < controlOrderPizzaItems.length; i++) {
+        pizzasTable[i] = { Id: controlOrderPizzaItems[i].id }
+    }
+
+    var orderModel = {
+        Address: orderAddress,
+        Price: parseFloat(orderPrice),
+        Pizzas: pizzasTable
+    };
+
+    return orderModel;
+}
+
 function orderPizzas() {
 
     if (orderPrice == 0) {
@@ -36,16 +53,19 @@ function orderPizzas() {
         return;
     }
 
-    var orderAddress = inputOrderAddres();
-    var order = "Zamówiłeś pizze o id:";
+    var newOrder = createOrderModel(inputOrderAddres());
+    var orderModelJson = JSON.stringify(newOrder);
 
-    for (var i = 0; i < controlOrderPizzaItems.length; i++) {
-        order += " " + controlOrderPizzaItems[i].id;
-    }
-
-    order += " na łączną kwotę " + orderPrice  + " pod adres: " + orderAddress;
-
-    alert(order);
+    $.ajax({
+        dataType: "json",
+        contentType: "application/json",
+        url: 'http://localhost:5413/api/order',
+        type: 'POST',
+        data: orderModelJson,
+        success: function() {
+            alert("Dodano twoje zamówienie");
+        }
+    });
 }
 
 function inputOrderAddres() {
@@ -62,7 +82,7 @@ function returnBill(price)
     orderPrice = Math.round((orderPrice + price) * 100) / 100;
 	
     $("#cart_sum").empty();
-        $("#cart_sum").append(orderPrice.toFixed(2).toString());
+    $("#cart_sum").append(orderPrice.toFixed(2).toString());
     
 }
 
