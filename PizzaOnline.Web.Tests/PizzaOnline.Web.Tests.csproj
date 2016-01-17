@@ -63,14 +63,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IngredientFeature.feature</DependentUpon>
     </Compile>
+    <Compile Include="Features\PizzaFeature.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PizzaFeature.feature</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Steps\BaseSteps.cs" />
     <Compile Include="Steps\IngredientFeatureSteps.cs" />
+    <Compile Include="Steps\PizzaFeatureSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Features\IngredientFeature.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>IngredientFeature.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Features\PizzaFeature.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>PizzaFeature.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

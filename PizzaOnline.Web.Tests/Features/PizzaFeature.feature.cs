@@ -19,20 +19,20 @@ namespace PizzaOnline.Web.Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("IngredientFeature")]
-    public partial class IngredientFeatureFeature
+    [NUnit.Framework.DescriptionAttribute("PizzaFeature")]
+    public partial class PizzaFeatureFeature
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "IngredientFeature.feature"
+#line 1 "PizzaFeature.feature"
 #line hidden
         
         [NUnit.Framework.TestFixtureSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "IngredientFeature", "", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "PizzaFeature", "", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -65,31 +65,31 @@ namespace PizzaOnline.Web.Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add ingredient")]
-        public virtual void AddIngredient()
+        [NUnit.Framework.DescriptionAttribute("Add Pizza")]
+        public virtual void AddPizza()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add ingredient", ((string[])(null)));
-#line 3
-this.ScenarioSetup(scenarioInfo);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add Pizza", ((string[])(null)));
 #line 4
- testRunner.Given("I have navigated to Ingredient page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+this.ScenarioSetup(scenarioInfo);
 #line 5
+ testRunner.Given("I have navigated to Pizza/Compose page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 6
  testRunner.And("I wait 5 seconds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Name",
-                        "Price"});
+                        "Name"});
             table1.AddRow(new string[] {
-                        "ingredient1",
-                        "12.56"});
-#line 6
- testRunner.When("I enter ingredient data", ((string)(null)), table1, "When ");
-#line 9
- testRunner.And("I press add ingredient button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+                        "pizzaName"});
+#line 7
+ testRunner.When("I enter pizza data", ((string)(null)), table1, "When ");
 #line 10
- testRunner.Then("I wait 5 seconds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("I have selected ingredients", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 11
- testRunner.And("The ingredient list contain item", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("I press add pizza button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 12
+ testRunner.Then("I wait 5 seconds", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 13
+ testRunner.And("Should go to Pizza", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
