@@ -97,7 +97,7 @@ namespace PizzaOnline.Tests.Services
             A.CallTo(() => _orderRepository.Persist(A<Order>._))
                 .MustHaveHappened();
             Assert.That(result, Is.Not.Null);
-            A.CallTo(() => _orderRepository.FindById(A<int>._))
+            A.CallTo(() => _orderRepository.GetById(A<int>._))
                 .MustHaveHappened();
         }
 

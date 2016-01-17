@@ -48,7 +48,7 @@ namespace PizzaOnline.Services
 
             if (orderDb != null)
             {
-                orderDb.Status = status.ToString();
+                orderDb.Status = status;
                 return _orderRepository.Persist(orderDb);
             }
 
