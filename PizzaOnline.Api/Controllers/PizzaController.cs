@@ -34,7 +34,13 @@ namespace PizzaOnline.Api.Controllers
         public IHttpActionResult GetPizza(int id)
         {
             var pizza = _pizzaService.Get(id);
-            return Ok(Mapper.Map<PizzaModel>(pizza));
+
+            if (pizza != null)
+            {
+                return Ok(Mapper.Map<PizzaModel>(pizza));
+            }
+
+            return NotFound();
         }
 
         [Route("api/pizza")]
