@@ -22,9 +22,16 @@ namespace PizzaOnline.Api.Controllers
 
         [Route("api/order/{id}", Name = "GetOrderById")]
         [HttpGet]
-        public IHttpActionResult GetPizza(int id)
+        public IHttpActionResult GetOrder(int id)
         {
-            return Ok();
+            var order = _orderService.Get(id);
+
+            if(order != null)
+            {
+                return Ok(Mapper.Map<OrderModel>(order));
+            }
+
+            return NotFound();
         }
 
         [Route("api/order")]

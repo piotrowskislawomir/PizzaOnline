@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Api\BaseControllerTests.cs" />
     <Compile Include="Api\IngredientControllerTests.cs" />
+    <Compile Include="Api\OrderControllerTests.cs" />
     <Compile Include="Api\PizzaControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\IngredientServiceTests.cs" />

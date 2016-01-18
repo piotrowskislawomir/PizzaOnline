@@ -37,6 +37,11 @@ namespace PizzaOnline.Services
             return null;
         }
 
+        public Order Get(int id)
+        {
+            return _orderRepository.GetById(id);
+        }
+
         public IEnumerable<Order> GetOrders()
         {
             return _orderRepository.GetOrders();

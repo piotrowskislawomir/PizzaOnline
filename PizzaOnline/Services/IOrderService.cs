@@ -12,5 +12,6 @@ namespace PizzaOnline.Services
         Order Add(Order order);
         IEnumerable<Order> GetOrders();
         Order Update(int id, string status);
+        Order Get(int id);
     }
 }
