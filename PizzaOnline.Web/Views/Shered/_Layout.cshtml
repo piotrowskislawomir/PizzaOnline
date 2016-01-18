@@ -18,11 +18,47 @@
         h1 {
             font-size: 400%;
         }
-    </style>
+       
+ul.myclass2 {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li.myclass {
+    float: left;
+}
+
+li.myclass a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li.myclass a:hover {
+    background-color: #111;
+}
+</style>
 </head>
 <body>
-<div id="header" style="margin-top: 20px; text-align: center">
+
+
+
+<div id="header" style="margin-top: 50px; text-align: center; width: auto; height: 70px;">
     <h1>PizzaOnline</h1>
+</div>
+<div style="margin-top: 70px;">
+    <ul class="myclass2">
+        <li class="myclass" style="margin-left: 100px;"><a href="http://localhost:5453/Ingredient/Index">Baza składników</a></li>
+        <li class="myclass"><a href="http://localhost:5453/Pizza/Compose">Tworzenie pizzy</a></li>
+        <li class="myclass"><a href="http://localhost:5453/Pizza/Index">Katalog pizz</a></li>
+        <li class="myclass"><a href="http://localhost:5453/Order/Create">Zamów pizze</a></li>
+        <li class="myclass"><a href="http://localhost:5453/Order/Index">Lista zamówień</a></li>
+    </ul>
 </div>
 <br/>
 <br/>
