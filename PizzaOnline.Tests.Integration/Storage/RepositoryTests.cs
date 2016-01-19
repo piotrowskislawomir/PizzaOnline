@@ -1,6 +1,4 @@
-﻿using System;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using NUnit.Framework;
 using PizzaOnline.Model;
 using PizzaOnline.Storage;
@@ -8,25 +6,14 @@ using PizzaOnline.Storage;
 namespace PizzaOnline.Tests.Integration.Storage
 {
     [TestFixture]
-    public class RepositoryTests
+    public class RepositoryTests : BaseRepositoryTests
     {
         [SetUp]
         public void SetUp()
         {
-            _sut = new Repository<Ingredient>(_dbContextFactory);
-        }
-
-        private static Func<DbContext> _dbContextFactory;
-
-        [TestFixtureSetUp]
-        public void FixtureSetUp()
-        {
-            _dbContextFactory = () => new PizzaOnlineContext("IntegrationTestsConnectionString");
-            Database.SetInitializer(new DropCreateDatabaseAlways<PizzaOnlineContext>());
-            _dbContextFactory().Database.Initialize(true);
+            _sut = new Repository<Ingredient>(DbContextFactory);
         }
         
-
         private Repository<Ingredient> _sut;
 
         [Test]
